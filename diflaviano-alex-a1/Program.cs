@@ -16,16 +16,12 @@ string decision;
 direction = direction.ToLower();
 // (left) mountain
 if (direction == "mountain")
-{
-    Console.WriteLine("");
-    Console.WriteLine("You chose to head towards the fire on the mountain.");
+{    
     progress = true;
 }
 // (right) village
 else if (direction == "village")
-{
-    Console.WriteLine("");
-    Console.WriteLine("You chose to head towards the village.");
+{ 
     progress = true;
 }
 // handles input that isnt left or right
@@ -40,62 +36,66 @@ else
 if (progress == true && direction == "mountain")
 {
     progress = false;
+    Console.Clear();
+    Console.WriteLine("You chose to head towards the fire on the mountain.");
+    Console.WriteLine();
+    Console.WriteLine("You come across a small camp.");
     Console.WriteLine("");
-    Console.WriteLine("You come across a wandering traders camp.");
-    Console.WriteLine("They greet you and offer you to trade.");
-    // showing the player their options for purchase
-    Console.WriteLine("Potion - 500 shards");
-    Console.WriteLine("Axe - 2500 shards");
-    Console.WriteLine("Map - 300 shards");
-    purchase = Console.ReadLine();
-    purchase.ToLower(); // taking the players input and forcing the string into all lower case
+    Console.WriteLine("An old man greets you and offers for you to sit down and have a drink with them.");
+    Console.WriteLine("After talking and having a drink, they offer you a really old looking map.");
+    Console.WriteLine("");
+    Console.WriteLine("Do you take the map?");
+    decision = Console.ReadLine();
+    decision.ToLower(); // taking the players input and forcing the string into all lower case
 
-    // handling each purchase
-    if (purchase == "potion")
+    if (decision == "yes")
     {
-        playerCurrency -= 500; // subtracting the price of the item from the players currency
+        Console.Clear();
+        Console.WriteLine("You take the map.");
+        Console.WriteLine("After taking the map the old man says that: An adventure awaits you. Be safe.");
+        
         Console.WriteLine("");
-        Console.WriteLine("You have purchased a potion!");
-        Console.WriteLine($"You have {playerCurrency} left.");
+        Console.WriteLine("You follow the map and it leads you to a cave");
         Console.WriteLine("");
-        Console.WriteLine("After making your purchase you decide to make camp in a cave and rest for the night.");
-    }
-    else if (purchase == "axe")
-    {
-        playerCurrency -= 2500; // subtracting the price of the item from the players currency
-        Console.WriteLine("");
-        Console.WriteLine("You have purchased an axe!");
-        Console.WriteLine($"You have {playerCurrency} left.");
-        Console.WriteLine("After making your purchase you decide to make camp in a cave and rest for the night.");
-    }
-    else if (purchase == "map")
-    {
-        playerCurrency -= 300; // subtracting the price of the item from the players currency
-        Console.WriteLine("");
-        Console.WriteLine("You have purchased a map!");
-        Console.WriteLine($"You have {playerCurrency} left.");
-        Console.WriteLine("");
-        Console.WriteLine("You start to inspect the map. Do you follow it?");
+        Console.WriteLine("Do you enter?");
         decision = Console.ReadLine();
         decision = decision.ToLower(); // taking the players input and forcing the string into all lower case
 
         // if you decide to follow the map
         if (decision == "yes")
         {
+            Console.Clear();
+            Console.WriteLine("After entering you continue following the map which leads to you a hole in the wall with a lever inside.");
             Console.WriteLine("");
-            Console.WriteLine("You decide to follow the map and it leads you to a hidden room in a small building in the village.");
-            Console.WriteLine("You find a large amount of shards and treasure");
+            Console.WriteLine("Do you pull the lever?");
+            decision = Console.ReadLine();
+            decision = decision.ToLower();
+
+            if(decision == "yes")
+            {
+                // pull lever
+                Console.Clear();
+                Console.WriteLine("You pull the lever and a giant stone door opens.");
+                Console.WriteLine("This reaveals a grand room filled with ancient artifacts.");
+            }
+            else
+            {
+                // turn back and go to inn
+                Console.Clear();
+                Console.WriteLine("You decide not to enter and head down to the village to sleep at the inn.");
+            }
         }
+        // not following map
         else
         {
-            Console.WriteLine("");
-            Console.WriteLine("You decide not to follow the map today and make camp in a cave and rest for the night.");
+            Console.Clear();
+            Console.WriteLine("You decide not to enter and head down to the village to sleep at the inn.");
         }
     }
-    else // get kicked out of purchase for not giving correct input
+    else
     {
-        Console.WriteLine("");
-        Console.WriteLine("Dont waste my time");
+        Console.Clear();
+        Console.WriteLine("Thats quite alright. Have a nice day.");
     }
 }
 
@@ -103,9 +103,12 @@ if (progress == true && direction == "mountain")
 if (progress == true && direction == "village")
 {
     progress = false;
+    Console.Clear();
+    Console.WriteLine("You chose to head towards the village.");
     Console.WriteLine("");
     Console.WriteLine("You meet a outgoing villager who recognizes that you are from out of town, and pulls you into his shop.");
     Console.WriteLine("They show you what they have for purchase.");
+    Console.WriteLine("");
     Console.WriteLine("Sword - 3500");
     Console.WriteLine("Armor - 4500");
     Console.WriteLine("Gaunlet - 1500");
